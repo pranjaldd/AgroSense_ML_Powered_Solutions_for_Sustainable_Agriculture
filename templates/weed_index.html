@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Weed Detection - AgroSense{% endblock %}
+
+{% block head %}
+<style>
+    .upload-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 20px;
+    }
+
+    .card {
+        background-color: rgba(215, 210, 210, 0.9); /* Light grey */
+        padding: 40px 30px;
+        border-radius: 15px;
+        width: 400px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        color: #333;
+        text-align: center; /* Center all inner content */
+    }
+
+    h1.title {
+        margin-bottom: 25px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .custom-file-upload {
+        background-color: #0984e3;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+
+    #file-name {
+        margin-bottom: 20px;
+        font-style: italic;
+        color: #555;
+    }
+
+    button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #00b894;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #019874;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="upload-container">
+    <div class="card">
+        <h1 class="title">Upload Image for Weed Detection</h1>
+        <form action="{{ url_for('weed.upload') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" id="file-upload" accept="image/*" required>
+            <label for="file-upload" class="custom-file-upload">Choose Image</label>
+            <div id="file-name">No file chosen</div>
+            <button type="submit">Result and Predict</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("file-upload").addEventListener("change", function () {
+        var fileName = this.files[0] ? this.files[0].name : "No file chosen";
+        document.getElementById("file-name").textContent = fileName;
+    });
+</script>
+{% endblock %}

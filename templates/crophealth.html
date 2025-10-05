@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="center-wrapper">
+    <div class="glass-card">
+        <h2>Plant Disease Detection</h2>
+
+        <form id="upload-form" method="post" enctype="multipart/form-data">
+            <label for="imageUpload" class="btn btn-primary upload-label">Choose Image</label>
+            <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg" style="display:none;">
+            
+            <div class="image-section" style="display:none; margin-top: 20px;">
+                <div class="img-preview">
+                    <div id="imagePreview"></div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-primary btn-lg">Predict!</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="loader" style="display:none; ">
+            <img src="/static/loader.gif" alt="loading" style="width: 50px; height: 50px;">
+        </div>
+
+        <h3 id="prediction-result" style="margin-top: 20px;">
+            {% if prediction %}
+                <span style="color:rgb(4, 52, 4);">Result: {{ prediction }}</span>
+            {% elif error %}
+                <span style="color:red;">Error: {{ error }}</span>
+            {% endif %}
+        </h3>
+    </div>
+</div>
+
+<script>
+    document.getElementById('imageUpload').addEventListener('change', function () {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('imagePreview').style.backgroundImage = 'url(' + e.target.result + ')';
+                document.querySelector('.image-section').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('/static/images/bg.jpg'); /* Change path if needed */
+        background-size: cover;
+        background-position: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .center-wrapper {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 15px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        color: #000;
+        max-width: 600px;
+        width: 90%;
+    }
+
+    .btn-primary {
+        background-color: #28c3b7;
+        border-color: #28c3b7;
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btn-primary:hover {
+        background-color: #25b1a4;
+    }
+
+    #imagePreview {
+        width: 250px;
+        height: 250px;
+        background-position: center center;
+        background-size: cover;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin: auto;
+    }
+
+    .loader {
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image-section {
+        display: none;
+        margin-top: 20px;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="title">
+        <h1>AgroSense</h1>
+        <h2 class="subtitle">ML-powered solutions for sustainable agriculture</h2>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Intro</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<br>
+
+<section class="info">
+    <div class="about-section">
+        <h1>About AgroSense</h1>
+        <p>
+            The AgroSense system focuses on key areas of agricultural management, including crop
+            health monitoring, soil moisture tracking, weed detection, and water footprint calculation.
+            Using real-time data from IoT sensors and advanced analytics, AgroSense empowers farmers
+            with precise insights to make informed decisions about irrigation, nutrient management,
+            and crop protection. By harnessing the power of AI and automation, the system optimizes
+            resource use, enhances crop yield, and promotes sustainable farming practices.  
+        </p>
+        <br>
+        <p>
+            This project demonstrates how technology can revolutionize agriculture, enabling farmers
+            to adopt smarter, data-driven approaches that reduce environmental impact while increasing
+            productivity. Through the integration of ML algorithms and sensor networks, AgroSense
+            serves as a comprehensive solution to meet the evolving needs of modern agriculture.
+        </p>
+    </div>
+</section>
+
+<br>
+
+<img src="{{ url_for('static', filename='images/Blankboard.png') }}" class="about-image" alt="About AgroSense">
+
+<br>
+
+<section class="tech">
+    <div class="about-us">
+        <h1>Technology used in implementing features</h1>
+        <br>
+        <p>AgroSense leverages the latest advancements in machine learning and IoT to create a suite of tools for sustainable agriculture. Our core technologies include:</p>
+        <br>
+        <ul>
+            <li><strong>R-CNN for weed detection:</strong> Utilizing Region-based Convolutional Neural Networks to accurately identify and classify unwanted plants.</li>
+            <li><strong>Sensor-based systems for soil moisture monitoring:</strong> Providing real-time data to optimize irrigation and reduce water waste.</li>
+            <li><strong>Algorithms for water footprint calculation:</strong> Measuring water consumption to promote efficient water use.</li>
+            <li><strong>CNNs for crop health monitoring:</strong> Employing Convolutional Neural Networks to detect diseases, pests, and nutrient deficiencies.</li>
+        </ul>
+    </div>
+</section>
+
+</body>
+</html>

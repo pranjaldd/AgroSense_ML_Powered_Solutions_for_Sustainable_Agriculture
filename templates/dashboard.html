@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      background: url('{{ url_for("static", filename="images/bg.jpg") }}') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar {
+      background-color: #262b30;
+    }
+
+    .navbar-brand, .nav-link, .dropdown-item {
+      color: white !important;
+    }
+
+    .dropdown-menu {
+      right: 0;
+      left: auto;
+    }
+
+    .dropdown-item {
+      color: #212529 !important;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+    }
+
+    .container-fluid {
+      padding: 0;
+    }
+
+    .main-container {
+      display: flex;
+      min-height: calc(100vh - 56px);
+      margin: 0;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-right: 1px solid #dee2e6;
+    }
+
+    .sidebar h4 {
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 30px 0;
+      padding: 8px 10px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 6px;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+      background-color: #d0ebff;
+      padding-left: 15px;
+      font-weight: 600;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 30px 20px; /* reduced side padding */
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .info-card {
+      border: 2px solid black;
+      padding: 15px;
+      text-align: center;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background-color: #fff;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .info-card:hover {
+      transform: scale(1.03);
+    }
+
+    .info-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .info-card p {
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+      }
+      .content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+    AgroSense
+  </a>
+
+  <div class="ml-auto">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+          {{ user.name }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="/logout" onclick="setTimeout(() => window.location.href='/', 3000);">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Layout -->
+<div class="container-fluid">
+  <div class="main-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h4>Dashboard</h4>
+      <a href="{{ url_for('weed.home') }}">🌿 Weed Detection</a>
+      <a href="{{ url_for('plant_bp.plant_disease') }}">🌱 Plant Disease</a>
+      <a href="{{ url_for('cropwater_bp.water_footprint') }}">💧 Water Footprint</a>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <h2>Welcome, {{ user.name }}!</h2>
+      <p>This is your dashboard. Select a feature below to get started:</p>
+
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="info-card">
+          <img src="{{ url_for('static', filename='images/impimp.jpg') }}" alt="Weed Detection">
+          <p>Automatically identify and highlight unwanted weeds in crop images to assist in precision agriculture.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="info-card">
+          <img src="{{ url_for('static', filename='images/rose.jpg') }}" alt="Plant Disease">
+          <p>Analyze plant leaf images to detect signs of disease early and improve crop health management.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="info-card">
+          <img src="{{ url_for('static', filename='images/iimm.jpg') }}" alt="Water Footprint">
+          <p>Estimate and track the water consumption for different crops to optimize irrigation and conserve resources.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

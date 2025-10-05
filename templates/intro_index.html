@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .card img {
+            width: 1000px;
+            height: 400px;
+            object-fit: contain;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="title">
+            <h1>AgroSense</h1>
+            <h2 class="subtitle">ML-powered solutions for sustainable agriculture</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('intro_page') }}">Intro</a></li>
+                <li><a href="{{ url_for('about_page') }}">About Us</a></li>
+                <li><a href="{{ url_for('index') }}">Login</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="impact">
+        <div class="swiper impact-cards">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card">
+                    <img src="{{ url_for('static', filename='images/baterial.jpg') }}" alt="plant bacteria">
+                </div>
+                <div class="swiper-slide card">
+                    <img src="{{ url_for('static', filename='images/bluewater.webp') }}" alt="water usage">
+                </div>
+                <div class="swiper-slide card">
+                    <img src="{{ url_for('static', filename='images/weed.jpeg') }}" alt="unwanted plant">
+                </div>
+                <div class="swiper-slide card">
+                    <img src="{{ url_for('static', filename='images/SoilMoisture.jpg') }}" alt="soil moisture">
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <br>
+
+        <div class="features-container">
+            <div class="feature-card" data-feature="Weed detection">
+                <img src="{{ url_for('static', filename='images/wdsymbol.png') }}" alt="Weed detection">
+                <h2>Weed Detection</h2>
+                <p>Stop growth of unwanted plants</p>
+            </div>
+            <div class="feature-card" data-feature="Soil Moisture sensing">
+                <img src="{{ url_for('static', filename='images/sensor.png') }}" alt="Soil Moisture sensing">
+                <h2>Soil Moisture Sensing</h2>
+                <p>Detect level of moisture in soil</p>
+            </div>
+            <div class="feature-card" data-feature="Water Footprint Calculation">
+                <img src="{{ url_for('static', filename='images/water.png') }}" alt="Water Footprint">
+                <h2>Water Footprint Calculation</h2>
+                <p>Understand usage of water for agriculture process</p>
+            </div>
+            <div class="feature-card" data-feature="crop health">
+                <img src="{{ url_for('static', filename='images/planthealth.png') }}" alt="crop health monitor">
+                <h2>Crop Health</h2>
+                <p>Detect crop disease</p>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <header>
+        <div class="container">
+            <div class="content">
+                <h1>Working of AgroSense</h1>
+                <div class="section">
+                    <h2>Weed Detection</h2>
+                    <p>Weeds compete with crops for vital resources, reducing yields and increasing costs. Efficient detection minimizes herbicide use, helping farmers adopt eco-friendly, cost-effective weed control, and improving crop quality and yields.</p>
+                </div>
+                <div class="section">
+                    <h2>Soil Moisture Detection (Automatic Water Pump)</h2>
+                    <p>Water scarcity challenges agriculture. Automatic soil moisture detection optimizes irrigation, reducing water waste and ensuring crops get the right amount, boosting yields and conserving water.</p>
+                </div>
+                <div class="section">
+                    <h2>Climate Humidity Detection</h2>
+                    <p>Humidity impacts plant health. Monitoring it helps prevent mold, pests, and diseases while optimizing irrigation, ensuring optimal growing conditions for healthier crops and higher yields.</p>
+                </div>
+                <div class="section">
+                    <h2>Water Footprint Monitoring</h2>
+                    <p>Tracking water usage helps farmers reduce consumption, improve irrigation practices, and support sustainable agriculture, critical in water-scarce regions to maintain food security.</p>
+                </div>
+                <div class="section">
+                    <h2>User-friendly interface</h2>
+                    <p>AgroSense provides interface that can be easily understood by the users and can be implemented by them. Data is visualized in form of chart and pie-graphs for better understanding.</p>
+                </div>
+            </div>
+            <div class="images">
+                <img src="{{ url_for('static', filename='images/impimp.jpg') }}" alt="Image 1">
+                <img src="{{ url_for('static', filename='images/imim.jpg') }}" alt="Image 2">
+                <img src="{{ url_for('static', filename='images/iimm.jpg') }}" alt="Image 3">
+            </div>
+        </div>
+    </header>
+
+    <!-- Swiper.js and your JS file -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".impact-cards", {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
