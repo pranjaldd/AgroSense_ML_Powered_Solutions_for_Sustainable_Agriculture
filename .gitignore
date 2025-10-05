@@ -1,0 +1,11 @@
+# Virtual environment
+myenv/
+
+# ML models
+models/*.h5
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
