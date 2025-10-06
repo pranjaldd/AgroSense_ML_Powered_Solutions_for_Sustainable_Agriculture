@@ -1,11 +1,22 @@
-# Virtual environment
+# Ignore large model and data files
+*.h5
+*.pkl
+*.pyd
+*.dll
+*.zip
+*.tar
+*.gz
+*.csv
+
+# Ignore Python virtual environments
 myenv/
+venv/
+.env/
 
-# ML models
-models/*.h5
-
-# Python cache
+# Ignore Python cache and temporary files
 __pycache__/
-*.pyc
-*.pyo
+*.log
 
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
