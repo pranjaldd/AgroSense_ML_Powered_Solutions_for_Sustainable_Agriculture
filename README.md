@@ -1,13 +1,11 @@
-# flask-authentication-system
+# AgroSense: ML-Powered Solutions for Sustainable Agriculture
 
+## Overview
+AgroSense is a machine learning project designed to assist farmers and agricultural enthusiasts by providing tools for plant disease detection, crop analysis, and prediction models. The project leverages pre-trained models to classify plant health and predict outcomes effectively.
 
-# Login page
-![alt text](https://github.com/kritimyantra/flask-authentication-system/blob/main/login.png?raw=true)
+## Features
+- Detect plant diseases using trained ML models.
+- Provide rankings and predictions for plant health and performance.
+- User-friendly Python scripts for running predictions.
+- Large ML models are tracked using **Git LFS** to keep the repository lightweight.
 
-
-# Register page
-![alt text](https://github.com/kritimyantra/flask-authentication-system/blob/main/register.png?raw=true)
-
-
-# Dashboard page
-![alt text](https://github.com/kritimyantra/flask-authentication-system/blob/main/dashboard.png?raw=true)
